@@ -1,0 +1,47 @@
+html,body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.choice.container {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+.item {
+    width: 250px;
+    height: 200px;
+    background-color: #ddd;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+}
+.item:hover {
+    background-color: #ccc;
+}
+
+.code.container {
+    width: 350px;
+    height: 300px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    visibility: hidden;
+}
+input[type=text] {
+    width: 230px;
+    height: 25px;
+    font-size: 18px;
+}

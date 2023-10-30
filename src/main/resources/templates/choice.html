@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/choice.css">
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <!-- <link th:href="@{/static/css/choice.css}" rel="stylesheet">
+    <link th:href="@{/static/css/reset.css}" rel="stylesheet"> -->
+    <title>CHOICE</title>
+
+    <script>
+        function applyBlur() {
+            var blurElements = document.querySelectorAll('.item');
+            blurElements.forEach(function(element) {
+                element.style.filter = 'blur(3px)';
+            });
+            var codeContainer = document.querySelector('.code.container');
+            if (codeContainer.style.visibility === 'visible') {
+                codeContainer.style.visibility = 'hidden';
+            } else {
+                codeContainer.style.visibility = 'visible';
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div class="choice container">
+        <div class="item">홈페이지 만들기</div>
+        <div class="item" onclick="applyBlur()">홈페이지 참가하기</div>
+    </div>
+    <div class="code container">
+        <span>참가 코드를 입력하세요</span>
+        <br>
+        <input type="text" name="code"> 
+    </div>
+</body>
+</html>
