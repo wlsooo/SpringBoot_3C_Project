@@ -28,16 +28,21 @@ public class MemberController {
         System.out.println("MemberController.join");
         System.out.println("memberDTO = " + memberDTO);
         memberService.save(memberDTO);
-        return "index";
+        return "login";
     }
 
-    @GetMapping("/login")
-    public String loginForm() {return "login";}
+//    @GetMapping("/login")
+//    public String loginForm() {return "login";}
     @PostMapping("/login")
-    public String login(@RequestParam("memberId") String memberId,
-                       @RequestParam("memberPass") String memberPass) {
-        System.out.println("memberId : " + memberId + ", memberPass : " + memberPass);
-        return "login";
+    public String login(@ModelAttribute MemberDTO memberDTO) {
+        MemberDTO loginResult = memberService.login(memberDTO);
+        if(loginResult != null) {
+            //lgoin 성공
+            return "main";
+        }else {
+            //login 실패
+            return "login";
+        }
     }
 
     @GetMapping("/choice")

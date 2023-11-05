@@ -1,5 +1,6 @@
 package com.example.CProject.dto;
 
+import com.example.CProject.entity.MemberEntity;
 import lombok.*;
 
 @Getter
@@ -23,9 +24,12 @@ public class MemberDTO {
                 '}';
     }
 
-//    public MemberDTO(String memberId, String memberPass, String memberEmail) {
-//        this.memberId = memberId;
-//        this.memberPass = memberPass;
-//        this.memberEmail = memberEmail;
-//    }
+    public static MemberDTO toMemberDTO(MemberEntity memberEntity) {
+        MemberDTO memberDTO = new MemberDTO();
+        memberDTO.setMemberId(memberEntity.getMemberId());
+        memberDTO.setMemberPass(memberEntity.getMemberPass());
+        memberDTO.setMemberChkPass(memberEntity.getMemberChkPass());
+        memberDTO.setMemberEmail(memberDTO.getMemberEmail());
+        return memberDTO;
+    }
 }
