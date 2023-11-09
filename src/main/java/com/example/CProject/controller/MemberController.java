@@ -2,6 +2,7 @@ package com.example.CProject.controller;
 
 import com.example.CProject.dto.MemberDTO;
 import com.example.CProject.service.MemberService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ public class MemberController {
     public String index() {
         return "index";
     }
+
     @GetMapping("/join")
     public String joinForm() {return "join";}
     @PostMapping("/join")
@@ -31,13 +33,16 @@ public class MemberController {
         return "login";
     }
 
-//    @GetMapping("/login")
-//    public String loginForm() {return "login";}
+    @GetMapping("/login")
+    public String loginForm() {
+        return "login";
+    }
     @PostMapping("/login")
-    public String login(@ModelAttribute MemberDTO memberDTO) {
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
         MemberDTO loginResult = memberService.login(memberDTO);
         if(loginResult != null) {
             //lgoin 성공
+            session.setAttribute("loginPass", loginResult.getMemberPass());
             return "main";
         }else {
             //login 실패

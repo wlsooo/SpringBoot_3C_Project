@@ -25,20 +25,22 @@ public class MemberService {
     public MemberDTO login(MemberDTO memberDTO) {
         /* 회원이 입력한 이메일로 DB에서 조회를 함
         DB에서 조회한 비밀번호와 사용자가 입력한 비밀번호가 일치하는지 판단 */
-        Optional<MemberEntity> byMemberEmail = memberRepository.findByMemberEmail(memberDTO.getMemberEmail());
-        if(byMemberEmail.isPresent()) {
+        Optional<MemberEntity> byMemberPass = memberRepository.findByMemberPass(memberDTO.getMemberPass());
+        if(byMemberPass.isPresent()) {
             //조회 결과가 있다(해당 이메일을 가진 회원 정보가 있다)
             //entity는 db의 값이고 dto는 입력값이다
-            MemberEntity memberEntity = byMemberEmail.get();
+            MemberEntity memberEntity = byMemberPass.get();
             if(memberEntity.getMemberPass().equals(memberDTO.getMemberPass())) {
                 // password 일치
-                //entity -> dto 변환
+                //entity -> dto 변환 후 리턴
+                MemberDTO dto = MemberDTO.toMemberDTO(memberEntity);
+                return dto;
             } else {
-
+                return null;
             }
         } else {
             //조회 결과가 없다(해당 이메일을 가진 회원이 없다)
+            return null;
         }
-        return memberDTO;
     }
 }

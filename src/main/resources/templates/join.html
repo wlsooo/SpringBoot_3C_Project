@@ -3,14 +3,15 @@
 <head> 
     <title>JOIN</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<!--    <link rel="stylesheet" href="/static/css/join.css">-->
-<!--    <link rel="stylesheet" href="/static/css/reset.css">-->
+<!--   <link rel="stylesheet" href="/static/css/join.css">-->
+<!--   <link rel="stylesheet" href="/static/css/reset.css">-->
      <link th:href="@{/css/join.css}" rel="stylesheet" type="text/css">
      <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
     <form method="post" action="/join">
         <input type="text" name="memberId" placeholder="아이디/id">
+         <button type="button" name="dupBtn" class="dup-button">중복확인</button>
         <hr>
         <input type="password" name="memberPass" placeholder="비밀번호/password">
         <hr>

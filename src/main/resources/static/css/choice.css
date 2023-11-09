@@ -21,7 +21,8 @@ html,body {
     align-items: center;
     transition: 0.2s;
 }
-.item:hover {
+.item:hover,
+.code-button:hover {
     background-color: #ccc;
 }
 
@@ -33,6 +34,8 @@ html,body {
     border-radius: 10px;
     font-size: 25px;
     font-weight: bold;
+    padding-top: 50px;
+    transition: 0.2s;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,4 +47,12 @@ input[type=text] {
     width: 230px;
     height: 25px;
     font-size: 18px;
+}   
+.code-button {
+    border: none;
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    background-color: #ddd; 
 }

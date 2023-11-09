@@ -3,8 +3,8 @@
 <head>
     <title>CHOICE</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <!--    <link rel="stylesheet" href="/static/css/join.css">-->
-    <!--    <link rel="stylesheet" href="/static/css/reset.css">-->
+    <!-- <link rel="stylesheet" href="/static/css/choice.css">
+    <link rel="stylesheet" href="/static/css/reset.css"> -->
     <link th:href="@{/css/choice.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
 
@@ -15,24 +15,39 @@
                 element.style.filter = 'blur(3px)';
             });
             var codeContainer = document.querySelector('.code.container');
-            if (codeContainer.style.visibility === 'visible') {
-                codeContainer.style.visibility = 'hidden';
-            } else {
-                codeContainer.style.visibility = 'visible';
-            }
+            codeContainer.style.visibility = 'visible'; // .code.container를 보이게 함
+        }
+    
+        function closeCodeContainer() {
+            var blurElements = document.querySelectorAll('.item');
+            blurElements.forEach(function(element) {
+                element.style.filter = 'none'; // 블러처리를 없앰
+            });
+            var codeContainer = document.querySelector('.code.container');
+            codeContainer.style.visibility = 'hidden'; // .code.container를 숨김
         }
     </script>
+    
 
 </head>
 <body>
     <div class="choice container">
-        <div class="item">홈페이지 만들기</div>
-        <div class="item" onclick="applyBlur()">홈페이지 참가하기</div>
+        <div class="item">
+            홈페이지 만들기
+        </div>
+        <div class="item" onclick="applyBlur()">
+            홈페이지 참가하기
+        </div>
     </div>
     <div class="code container">
         <span>참가 코드를 입력하세요</span>
         <br>
         <input type="text" name="code"> 
+        <br>
+        <div class="btn container">
+            <button type="button" class="code-button" onclick="closeCodeContainer()">닫기</button>
+            <button type="submit" class="code-button">입력완료</button>
+        </div>
     </div>
 </body>
 </html>
