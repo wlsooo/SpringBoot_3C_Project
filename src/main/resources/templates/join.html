@@ -1,17 +1,45 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
-    <title>JOIN</title> 
+    <title>3C</title> 
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <!--   <link rel="stylesheet" href="/static/css/join.css">-->
 <!--   <link rel="stylesheet" href="/static/css/reset.css">-->
      <link th:href="@{/css/join.css}" rel="stylesheet" type="text/css">
      <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        function checkDuplicate() {
+            var memberId = document.getElementById("memberId").value;
+            if (memberId) {
+                $.ajax({
+                    type: "POST",
+                    url: "/checkDuplicate",
+                    data: { "memberId": memberId },
+                    success: function(result) {
+                        if (result) {
+                            alert("사용 가능한 아이디입니다.");
+                        } else {
+                            alert("이미 사용 중인 아이디입니다.");
+                        }
+                    },
+                    error: function() {
+                        alert("서버 오류가 발생했습니다.");
+                    }
+                });
+            } else {
+                alert("아이디를 입력해주세요.");
+            }
+        }
+    </script>
+
 </head>
 <body>
     <form method="post" action="/join">
-        <input type="text" name="memberId" placeholder="아이디/id">
-         <button type="button" name="dupBtn" class="dup-button">중복확인</button>
+        <input type="text" id="memberId" name="memberId" placeholder="아이디/id">
+        <button type="button" name="dupBtn" class="dup-button" onclick="checkDuplicate()">중복확인</button>
         <hr>
         <input type="password" name="memberPass" placeholder="비밀번호/password">
         <hr>
