@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>3C</title>
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="icon" th:href="@{/images/favicon.png}" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-   session 값 확인 : <p th:text="${session.loginPass}"></p>
+   session 값 확인 : <p th:text="${session.loginId}"></p>
 </body>
 </html>

@@ -2,42 +2,59 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head> 
     <title>3C</title> 
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="icon" th:href="@{/images/favicon.png}" type="image/x-icon">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<!--   <link rel="stylesheet" href="/static/css/join.css">-->
-<!--   <link rel="stylesheet" href="/static/css/reset.css">-->
-     <link th:href="@{/css/join.css}" rel="stylesheet" type="text/css">
-     <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/join.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         function checkDuplicate() {
             var memberId = document.getElementById("memberId").value;
             if (memberId) {
+                var isDuplicate = false; // 중복 여부 변수 추가
+    
                 $.ajax({
                     type: "POST",
                     url: "/checkDuplicate",
                     data: { "memberId": memberId },
+                    async: false, // 동기식으로 변경
                     success: function(result) {
-                        if (result) {
-                            alert("사용 가능한 아이디입니다.");
-                        } else {
-                            alert("이미 사용 중인 아이디입니다.");
+                        if (!result) {
+                            // 중복된 아이디라면
+                            alert("이미 가입된 아이디입니다!");
+                            isDuplicate = true; // 중복이므로 변수를 true로 변경
+                            document.getElementById("memberId").focus();
                         }
                     },
                     error: function() {
+                        // 서버 오류 발생 시
                         alert("서버 오류가 발생했습니다.");
                     }
                 });
-            } else {
-                alert("아이디를 입력해주세요.");
+    
+                return !isDuplicate; // 중복 여부에 따라 폼 제출을 결정
             }
+            return true; // 아이디가 입력되지 않았으면 폼 제출 허용
+        }
+    
+        function checkEmailFormat() {
+            var email = document.getElementById("memberEmail").value;
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    
+            if (!emailRegex.test(email)) {
+                // 올바르지 않은 이메일 형식일 경우
+                alert("올바른 이메일 형식을 작성해주세요!");
+                // 페이지를 유지
+                document.getElementById("memberEmail").focus();
+                return false; // 폼 제출을 막음
+            }
+            return true; // 이메일 형식이 올바르면 폼 제출 허용
         }
     </script>
-
 </head>
 <body>
-    <form method="post" action="/join">
+    <form method="post" action="/join" onsubmit="return checkDuplicate() && checkEmailFormat();">
         <input type="text" id="memberId" name="memberId" placeholder="아이디/id">
         <button type="button" name="dupBtn" class="dup-button" onclick="checkDuplicate()">중복확인</button>
         <hr>
@@ -45,8 +62,9 @@
         <hr>
         <input type="password" name="memberChkPass" placeholder="비밀번호 확인/check password">
         <hr>
-        <input type="text" name="memberEmail" placeholder="이메일/email">
+        <input type="text" id="memberEmail" name="memberEmail" placeholder="이메일/email">
         <hr>
+    
         <button type="submit" class="sbmBtn">회원가입/Join</button>
     </form>
 </body>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>3C</title>
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="icon" th:href="@{/images/favicon.png}" type="image/x-icon">  
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <!-- <link rel="stylesheet" href="/static/css/choice.css">
     <link rel="stylesheet" href="/static/css/reset.css"> -->
@@ -32,10 +32,13 @@
 
 </head>
 <body>
+    <!-- <div th:text="${session['loginId']}">로그인한 아이디</div> -->
     <div class="choice container">
-        <div class="item">
-            홈페이지 만들기
-        </div>
+        <a th:href="@{/home}">
+            <div class="item">
+                홈페이지 만들기
+            </div>
+        </a>        
         <div class="item" onclick="applyBlur()">
             홈페이지 참가하기
         </div>
@@ -47,7 +50,7 @@
         <br>
         <div class="btn container">
             <button type="button" class="code-button" onclick="closeCodeContainer()">닫기</button>
-            <button type="submit" class="code-button">입력완료</button>
+            <a th:href="@{/home}"><button type="submit" class="code-button">입력완료</button></a>
         </div>
     </div>
 </body>
