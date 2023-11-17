@@ -87,7 +87,7 @@ public class MemberService {
             memberRepository.save(memberEntity);
         } else {
             // 필요한 처리 (예외 던지기, 에러 메시지 출력 등)
-            System.out.println("성공!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            System.out.println("failed");
         }
     }
 

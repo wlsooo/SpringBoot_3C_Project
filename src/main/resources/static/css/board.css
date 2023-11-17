@@ -1,0 +1,91 @@
+header {
+    height: 44px;
+    top: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.nav-text {
+    font-size: 25px;
+    font-family: Inter;
+    font-weight: 900;
+}
+.nav {
+    margin-right: 20px;
+}
+.nav-item {
+    font-size: 16px;
+}
+.nav-item:first-child { 
+    margin-right: 100px;
+}
+hr {
+    border: 0.5px solid #000;
+}
+
+.board.title {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.board-txt {
+    font-size: 20px;
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+.board.hr {
+    width: 700px;
+    height: 1px;
+}
+.choice.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;   
+    margin: 15px auto 30px auto;
+}
+.type.choice {
+    display: flex;
+}
+button[type=button] {
+    width: 150px;
+    height: 30px;
+    border: 1px solid #000;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button[type=button]:hover {
+    background-color: #ddd; /* 아주 옅은 회색 */
+}
+
+button[type=button]:active {
+    background-color: #ccc;
+}
+
+/* 좌측 버튼 */
+button[type=button]:first-child {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-right: none; 
+}
+
+/* 우측 버튼 */
+button[type=button]:last-child {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+select {
+    width: 150px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 50px;
+    background-color: #fff;
+}
+
+button[type=button].selected {
+    background-color: #ccc;
+}

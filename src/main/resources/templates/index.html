@@ -10,24 +10,24 @@
     <link rel="stylesheet" href="/static/css/reset.css"> -->
     <link th:href="@{/css/main.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="icon" th:href="@{/images/favicon.png}" type="image/x-icon">
     <title>3C</title>
 </head>
 <body>
 
   <div class="container bgcontainer">
-    <img src="/images/people.png">
+    <img th:src="@{/images/people.png}">
   </div>
 
   <div class="container">
     <div class="text">
-      Create<br>
-      Customizing<br>
-      Club homepage<br>
+      C r e a t e<br>
+      C u s t o m i z i n g<br>
+      C l u b &nbsp;h o m e p a g e<br>
     </div>
     <div class="btn-container">
-      <a href="/join"></a><button type="button">JOIN</button></a><br>
-      <a href="/login"></a><button type="button">LOGIN</button></a>
+      <a href="/join"><button type="button">JOIN</button></a><br>
+      <a href="/login"><button type="button">LOGIN</button></a>
     </div>
 
   </div>

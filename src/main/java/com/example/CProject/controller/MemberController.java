@@ -114,4 +114,14 @@ public class MemberController {
     public String choice() {
         return "choice";
     }
+
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
+
+    @GetMapping("/board")
+    public String board() {
+        return "board";
+    }
 }

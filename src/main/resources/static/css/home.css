@@ -1,0 +1,121 @@
+/* Reset some default styles */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    height: 44px;
+    top: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.nav-text {
+    font-size: 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+}
+
+.nav {
+    margin-right: 20px;
+}
+
+.nav-item {
+    font-size: 16px;
+}
+
+.nav-item:first-child {
+    margin-right: 100px;
+}
+
+hr {
+    border: 0.5px solid #000;
+}
+
+main {
+    width: 100%;
+}
+
+.image label {
+    position: relative;
+    display: inline-block;
+}
+
+input[type=file] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.upload-text {
+    display: inline-block;
+}
+
+.image {
+    width: 100%;
+    height: 300px;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.image label {
+    position: relative;
+    display: inline-block;
+}
+
+.image i {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.image i.active {
+    display: inline-block;
+}
+
+
+.main.components.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 55px;
+}
+
+.main.components {
+    display: flex;
+    gap: 70px;
+}
+
+.item {
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.item1,
+.item3 {
+    width: 250px;
+    height: 250px;
+    background-color: #ccc;
+}
+
+.item2 {
+    width: 400px;
+    height: 250px;
+    background-color: #ccc;
+}
