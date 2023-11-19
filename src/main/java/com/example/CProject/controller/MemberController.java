@@ -186,9 +186,5 @@ public class MemberController {
         return "board";
     }
 
-    @GetMapping("/home")
-    public String home() {
-        return "home";
-    }
 
 }
